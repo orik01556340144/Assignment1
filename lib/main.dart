@@ -104,17 +104,19 @@ class BuyNowPage extends StatelessWidget {
   final String itemName;
   final String itemPrice;
 
-   BuyNowPage({
+  BuyNowPage({
     required this.itemName,
     required this.itemPrice,
     Key? key,
   }) : super(key: key);
 
+  String? selectedOption; // Store the selected dropdown option
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Paymant Section'),
+        title: Text('Payment Section'),
         foregroundColor: Colors.red[400],
         backgroundColor: Colors.green[800],
       ),
@@ -124,36 +126,56 @@ class BuyNowPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-               Text(
+              Text(
                 'Choose Payment Method',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 16),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  PaymentMethodButton(image: 'images/bkash.png'),
+                  const SizedBox(width: 16),
+                  PaymentMethodButton(image: 'images/nagad.png'),
+                  const SizedBox(width: 16),
+                  PaymentMethodButton(image: 'images/rocket.png'),
+                  const SizedBox(width: 16),
+                  PaymentMethodButton(image: 'images/mastercard.png'),
                 ],
               ),
-               SizedBox(height: 16),
-              DropdownButton<String>(
-                items: <String>['Option 1', 'Option 2', 'Option 3'].map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                onChanged: (String? newValue) {
-                  // Handle dropdown value change
-                },
-                hint: Text('Select an option'),
+              const SizedBox(height: 16),
+              Text(
+                'Choose Pick Up',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-               SizedBox(height: 32),
+              DropdownButton<String>(
+                value: 'Select Pick UP',
+                onChanged: (value) {},
+                items: [
+                  DropdownMenuItem(
+                    child: const Text('Select Pick UP'),
+                    value: 'Select Pick UP',
+
+                  ),
+                  DropdownMenuItem(
+                    child: const Text('Home PICK UP'),
+                    value: 'Home PICK UP',
+
+                  ),
+                  DropdownMenuItem(
+                    child: const Text('Store Pickup'),
+                    value: 'Store Pickup',
+
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 32),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context); // Go back to the previous page
+                  Navigator.pop(context);
                 },
-                child:  Text('Go Back'),
+                child: Text('Go Back'),
               ),
             ],
           ),
@@ -162,6 +184,7 @@ class BuyNowPage extends StatelessWidget {
     );
   }
 }
+
 
 class PaymentMethodButton extends StatelessWidget {
   final String image;
