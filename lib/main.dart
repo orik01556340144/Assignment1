@@ -114,7 +114,7 @@ class BuyNowPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Buy Now'),
+        title: Text('Paymant Section'),
         foregroundColor: Colors.red[400],
         backgroundColor: Colors.green[800],
       ),
