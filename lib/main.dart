@@ -89,7 +89,7 @@ class MyApp extends StatelessWidget {
                     },
                     child:  Text('Buy Now'),
                   ),
-                   Divider(), // Divider between products
+                   Divider(),
                 ],
               );
             },
@@ -110,7 +110,7 @@ class BuyNowPage extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  String? selectedOption; // Store the selected dropdown option
+  String? selectedOption;
 
   @override
   Widget build(BuildContext context) {
